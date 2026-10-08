@@ -1,3 +1,25 @@
+.DEFAULT_GOAL := help
+
+help:
+	@echo "Targets: build, test, deploy, install, reset-deps"
+
+
+install:
+	forge install cyfrin/foundry-devops
+	forge install smartcontractkit/chainlink-brownie-contracts@1.1.1
+	forge install foundry-rs/forge-std@v1.8.2
+
+
+reset-deps:
+	rm -rf lib .git/modules/lib
+	-git rm -r --cached lib
+	-git config --remove-section submodule.lib/foundry-devops
+	-git config --remove-section submodule.lib/chainlink-brownie-contracts
+	-git config --remove-section submodule.lib/forge-std
+	rm -f .gitmodules && touch .gitmodules
+	git add . && git commit -m "reset deps" || true
+	$(MAKE) install
+
 -include .env
 
 .PHONY: all test clean deploy fund help install snapshot format anvil zktest
