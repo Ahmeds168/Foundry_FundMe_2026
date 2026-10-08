@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity 0.8.19;
+pragma solidity ^0.8.18;
 
 import {Test, console} from "forge-std/Test.sol";
 import {ZkSyncChainChecker} from "lib/foundry-devops/src/ZkSyncChainChecker.sol";
@@ -24,7 +24,7 @@ contract ZkSyncDevOps is Test, ZkSyncChainChecker, FoundryZkSyncChecker {
     // // `forge test --mt testZkSyncFoundryFails --zksync`
     // // and this will fail!
     // function testZkSyncFoundryFails() public onlyVanillaFoundry {
-    //     bool exists = vm.keyExistsJson('{"hi": "true"}', ".hi");
-    //     assert(exists);
+    //   bool exists = vm.keyExistsJson('{"hi": "true"}', ".hi");
+    // assert(exists);
     // }
 }
